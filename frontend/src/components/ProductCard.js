@@ -113,15 +113,24 @@ const ProductCard = () => {
           <div className="toggle-wrapper" title="فتح الصفحة المصغرة">
             <ToggleButton active={miniOpen} onClick={() => setMiniOpen(true)} />
           </div>
-          <svg viewBox="0 0 1921 1081" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" className="svg" aria-hidden="true">
+          <svg viewBox="0 0 1921 1081" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" className="svg shine-container" aria-hidden="true">
             <defs>
               <radialGradient gradientUnits="objectBoundingBox" gradientTransform="translate(0.219) scale(0.563 1)" r="1.204" cy="0.5" cx="0.5" id="radial-gradient">
-                <stop stopColor="#fff" offset={0} />
-                <stop stopColor="#bcbcbc" offset={1} />
+                <stop stopColor="#f8fafc" offset={0} />
+                <stop stopColor="#cbd5e0" offset={1} />
               </radialGradient>
+              <linearGradient id="shine-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+                <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </linearGradient>
             </defs>
             <g transform="translate(-121.5 -92.5)" id="hoodie">
               <rect fill="url(#radial-gradient)" strokeWidth={1} strokeMiterlimit={10} stroke="#fff" transform="translate(122 93)" height={1080} width={1920} data-name="Rectangle 83" id="Rectangle_83" />
+              <rect fill="url(#shine-gradient)" strokeWidth={0} transform="translate(122 93)" height={1080} width={1920} className="shine-overlay" opacity="0">
+                <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+                <animateTransform attributeName="transform" type="translate" values="122 93; 322 293; 522 493" dur="3s" repeatCount="indefinite" />
+              </rect>
             </g>
           </svg>
           {/* Animated credit cards stack image */}
