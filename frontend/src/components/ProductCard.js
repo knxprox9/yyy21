@@ -404,53 +404,69 @@ const StyledWrapper = styled.div`
     border-radius: inherit;
     position: relative;
     overflow: hidden;
-  }
-
-  .card .image-container .enhanced-background {
-    /* تأثير الضوء الداخلي المبسط */
+    /* خلفية متدرجة واضحة */
+    background: linear-gradient(135deg, 
+      #ffffff 0%, 
+      #f1f5f9 25%, 
+      #e2e8f0 50%, 
+      #cbd5e0 75%, 
+      #94a3b8 100%
+    );
+    /* ظلال داخلية واضحة */
     box-shadow: 
-      inset 0 4px 8px rgba(255,255,255,0.6),
-      inset 0 -4px 8px rgba(0,0,0,0.2),
-      inset 4px 0 6px rgba(255,255,255,0.3),
-      inset -4px 0 6px rgba(0,0,0,0.15);
-    
-    /* تأثير الكريستال المبسط */
-    background: 
-      linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%),
-      linear-gradient(225deg, rgba(255,255,255,0.2) 0%, transparent 50%),
-      radial-gradient(ellipse at center, #f8fafc, #cbd5e0);
-    
-    border-radius: inherit;
+      inset 0 8px 16px rgba(255,255,255,0.8),
+      inset 0 -8px 16px rgba(0,0,0,0.3),
+      inset 8px 0 12px rgba(255,255,255,0.4),
+      inset -8px 0 12px rgba(0,0,0,0.2);
   }
 
-  /* تأثير البريق الإضافي بـ CSS */
-  .card .image-container .enhanced-background::before {
+  /* تأثير البريق الواضح */
+  .card .image-container .svg::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
+    left: -150px;
+    width: 150px;
     height: 100%;
     background: linear-gradient(90deg, 
       rgba(255,255,255,0) 0%, 
-      rgba(255,255,255,0.4) 50%, 
+      rgba(255,255,255,0.8) 50%, 
       rgba(255,255,255,0) 100%
     );
-    animation: css-shine 3s ease-in-out infinite;
+    animation: visible-shine 3s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  /* نقاط واضحة */
+  .card .image-container .svg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 2px, transparent 2px),
+      radial-gradient(circle at 60% 40%, rgba(0,0,0,0.2) 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.5) 1.5px, transparent 1.5px),
+      radial-gradient(circle at 30% 80%, rgba(0,0,0,0.15) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px, 60px 60px, 40px 40px;
     z-index: 1;
   }
 
-  @keyframes css-shine {
+  @keyframes visible-shine {
     0% {
-      left: -100%;
+      left: -150px;
       opacity: 0;
     }
-    50% {
-      left: 50%;
+    30% {
+      opacity: 1;
+    }
+    70% {
       opacity: 1;
     }
     100% {
-      left: 100%;
+      left: calc(100% + 50px);
       opacity: 0;
     }
   }
