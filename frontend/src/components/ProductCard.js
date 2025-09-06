@@ -124,9 +124,9 @@ const ProductCard = () => {
               <rect fill="url(#radial-gradient)" strokeWidth={1} strokeMiterlimit={10} stroke="#fff" transform="translate(122 93)" height={1080} width={1920} data-name="Rectangle 83" id="Rectangle_83" />
             </g>
           </svg>
-          {/* Animated financial icon */}
-          <div className="animated-financial-icon">
-            <FiCreditCard size={80} />
+          {/* Animated credit cards stack image */}
+          <div className="animated-cards-stack">
+            <img src="/assets/credit-cards-stack.png" alt="Credit Cards Stack" />
           </div>
         </div>
         <label className="favorite">
