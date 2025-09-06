@@ -406,112 +406,52 @@ const StyledWrapper = styled.div`
     overflow: hidden;
   }
 
-  .card .image-container .shine-container {
-    /* التأثير 4: الضوء الداخلي + التأثير 7: الكريستال */
-    background: 
-      /* تأثير الكريستال - طبقات شفافة متعددة */
-      linear-gradient(135deg, rgba(255,255,255,0.6) 0%, transparent 50%),
-      linear-gradient(225deg, rgba(255,255,255,0.3) 0%, transparent 50%),
-      linear-gradient(315deg, rgba(0,0,0,0.1) 0%, transparent 50%),
-      /* تأثير الضوء الداخلي */
-      radial-gradient(ellipse at center, 
-        rgba(255,255,255,0.8) 0%, 
-        rgba(241,245,249,0.9) 40%, 
-        rgba(203,213,224,0.7) 100%
-      ),
-      /* التأثير 6: الموجات الخفيفة */
-      linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%),
-      linear-gradient(-45deg, transparent 30%, rgba(0,0,0,0.08) 50%, transparent 70%),
-      /* التأثير 3: النمط المنقط */
-      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.4) 1px, transparent 1px),
-      radial-gradient(circle at 75% 75%, rgba(0,0,0,0.15) 1px, transparent 1px),
-      radial-gradient(circle at 50% 10%, rgba(255,255,255,0.3) 1px, transparent 1px),
-      radial-gradient(circle at 10% 80%, rgba(0,0,0,0.1) 1px, transparent 1px),
-      /* الخلفية الأساسية */
-      radial-gradient(ellipse at center, #f8fafc 0%, #cbd5e0 100%);
-    
-    background-size: 
-      100% 100%, 100% 100%, 100% 100%, 100% 100%,  /* الكريستال والضوء الداخلي */
-      40px 40px, 40px 40px,  /* الموجات */
-      25px 25px, 25px 25px, 30px 30px, 35px 35px,  /* النقاط */
-      100% 100%;  /* الخلفية الأساسية */
-
-    /* ظلال داخلية معززة للعمق */
+  .card .image-container .enhanced-background {
+    /* تأثير الضوء الداخلي المبسط */
     box-shadow: 
-      inset 0 2px 6px rgba(255,255,255,0.6),
-      inset 0 -2px 6px rgba(0,0,0,0.15),
-      inset 2px 0 4px rgba(255,255,255,0.3),
-      inset -2px 0 4px rgba(0,0,0,0.1);
+      inset 0 4px 8px rgba(255,255,255,0.6),
+      inset 0 -4px 8px rgba(0,0,0,0.2),
+      inset 4px 0 6px rgba(255,255,255,0.3),
+      inset -4px 0 6px rgba(0,0,0,0.15);
+    
+    /* تأثير الكريستال المبسط */
+    background: 
+      linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%),
+      linear-gradient(225deg, rgba(255,255,255,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at center, #f8fafc, #cbd5e0);
+    
+    border-radius: inherit;
   }
 
-  /* التأثير 2: البريق المتحرك - محسن */
-  .card .image-container .shine-container::before {
+  /* تأثير البريق الإضافي بـ CSS */
+  .card .image-container .enhanced-background::before {
     content: '';
     position: absolute;
-    top: -100%;
+    top: 0;
     left: -100%;
-    width: 300%;
-    height: 300%;
-    background: 
-      linear-gradient(45deg, 
-        transparent 35%, 
-        rgba(255,255,255,0.6) 48%, 
-        rgba(255,255,255,0.8) 50%, 
-        rgba(255,255,255,0.6) 52%, 
-        transparent 65%
-      );
-    animation: enhanced-shine-sweep 5s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* بريق إضافي ثانوي للتأثير المتقدم */
-  .card .image-container .shine-container::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: 
-      radial-gradient(ellipse at center, 
-        rgba(255,255,255,0.3) 0%, 
-        rgba(255,255,255,0.1) 30%, 
-        transparent 60%
-      );
-    animation: secondary-glow 7s ease-in-out infinite reverse;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0.4) 50%, 
+      rgba(255,255,255,0) 100%
+    );
+    animation: css-shine 3s ease-in-out infinite;
     z-index: 1;
   }
 
-  @keyframes enhanced-shine-sweep {
+  @keyframes css-shine {
     0% {
-      transform: translateX(-150%) translateY(-150%) rotate(45deg);
+      left: -100%;
       opacity: 0;
     }
-    15% {
-      opacity: 0.3;
-    }
     50% {
+      left: 50%;
       opacity: 1;
     }
-    85% {
-      opacity: 0.3;
-    }
     100% {
-      transform: translateX(150%) translateY(150%) rotate(45deg);
+      left: 100%;
       opacity: 0;
-    }
-  }
-
-  @keyframes secondary-glow {
-    0%, 100% {
-      transform: translateX(0%) translateY(0%) scale(0.8);
-      opacity: 0.2;
-    }
-    50% {
-      transform: translateX(-20%) translateY(-20%) scale(1.2);
-      opacity: 0.5;
     }
   }
 
