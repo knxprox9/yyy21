@@ -125,8 +125,10 @@ const ProductCard = () => {
               <rect fill="url(#radial-gradient)" strokeWidth={1} strokeMiterlimit={10} stroke="#fff" transform="translate(122 93)" height={1080} width={1920} data-name="Rectangle 83" id="Rectangle_83" />
             </g>
           </svg>
-          {/* Live transparent video with bg removed */}
-          <TransparentIconVideo src="/assets/finance-anim.mp4" size={160} opacity={0.98} tolerance={80} edgeFeather={1.2} bgStrategy={'white'} />
+          {/* Animated financial icon */}
+          <div className="animated-financial-icon">
+            <FiCreditCard size={80} />
+          </div>
         </div>
         <label className="favorite">
           <input defaultChecked type="checkbox" />
