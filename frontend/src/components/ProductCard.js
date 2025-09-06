@@ -113,24 +113,60 @@ const ProductCard = () => {
           <div className="toggle-wrapper" title="فتح الصفحة المصغرة">
             <ToggleButton active={miniOpen} onClick={() => setMiniOpen(true)} />
           </div>
-          <svg viewBox="0 0 1921 1081" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" className="svg shine-container" aria-hidden="true">
+          <svg viewBox="0 0 1921 1081" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" className="svg enhanced-background" aria-hidden="true">
             <defs>
-              <radialGradient gradientUnits="objectBoundingBox" gradientTransform="translate(0.219) scale(0.563 1)" r="1.204" cy="0.5" cx="0.5" id="radial-gradient">
-                <stop stopColor="#f8fafc" offset={0} />
+              <radialGradient gradientUnits="objectBoundingBox" gradientTransform="translate(0.219) scale(0.563 1)" r="1.204" cy="0.5" cx="0.5" id="enhanced-gradient">
+                <stop stopColor="#ffffff" offset={0} />
+                <stop stopColor="#f8fafc" offset={0.3} />
+                <stop stopColor="#e2e8f0" offset={0.7} />
                 <stop stopColor="#cbd5e0" offset={1} />
               </radialGradient>
-              <linearGradient id="shine-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              
+              {/* نقاط منقطة */}
+              <pattern id="dots-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.4)" />
+                <circle cx="15" cy="15" r="1" fill="rgba(0,0,0,0.1)" />
+              </pattern>
+              
+              {/* خطوط موجية */}
+              <pattern id="waves-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M0,20 Q10,10 20,20 T40,20" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
+                <path d="M0,20 Q10,30 20,20 T40,20" stroke="rgba(0,0,0,0.1)" strokeWidth="1" fill="none" />
+              </pattern>
+            </defs>
+            
+            <g transform="translate(-121.5 -92.5)" id="hoodie">
+              {/* الخلفية الأساسية */}
+              <rect fill="url(#enhanced-gradient)" strokeWidth={1} strokeMiterlimit={10} stroke="#fff" transform="translate(122 93)" height={1080} width={1920} data-name="Rectangle 83" id="Rectangle_83" />
+              
+              {/* طبقة النقاط */}
+              <rect fill="url(#dots-pattern)" transform="translate(122 93)" height={1080} width={1920} opacity="0.6" />
+              
+              {/* طبقة الموجات */}
+              <rect fill="url(#waves-pattern)" transform="translate(122 93)" height={1080} width={1920} opacity="0.4" />
+              
+              {/* البريق المتحرك */}
+              <rect fill="url(#shine-gradient)" strokeWidth={0} transform="translate(122 93)" height={1080} width={200} opacity="0.7">
+                <animateTransform 
+                  attributeName="transform" 
+                  type="translate" 
+                  values="22 93; 922 93; 1722 93" 
+                  dur="4s" 
+                  repeatCount="indefinite" 
+                />
+                <animate 
+                  attributeName="opacity" 
+                  values="0;0.7;0" 
+                  dur="4s" 
+                  repeatCount="indefinite" 
+                />
+              </rect>
+              
+              <linearGradient id="shine-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
+                <stop offset="50%" stopColor="rgba(255,255,255,0.6)" />
                 <stop offset="100%" stopColor="rgba(255,255,255,0)" />
               </linearGradient>
-            </defs>
-            <g transform="translate(-121.5 -92.5)" id="hoodie">
-              <rect fill="url(#radial-gradient)" strokeWidth={1} strokeMiterlimit={10} stroke="#fff" transform="translate(122 93)" height={1080} width={1920} data-name="Rectangle 83" id="Rectangle_83" />
-              <rect fill="url(#shine-gradient)" strokeWidth={0} transform="translate(122 93)" height={1080} width={1920} className="shine-overlay" opacity="0">
-                <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
-                <animateTransform attributeName="transform" type="translate" values="122 93; 322 293; 522 493" dur="3s" repeatCount="indefinite" />
-              </rect>
             </g>
           </svg>
           {/* Animated credit cards stack image */}
