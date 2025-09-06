@@ -353,7 +353,43 @@ const StyledWrapper = styled.div`
     }
   }
 
-  .card .image-container .svg { height: 100%; width: 100%; border-radius: inherit; }
+  .card .image-container .svg { 
+    height: 100%; 
+    width: 100%; 
+    border-radius: inherit;
+    background: linear-gradient(135deg, #f1f5f9, #cbd5e0);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card .image-container .svg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+      transparent 30%, 
+      rgba(255,255,255,0.4) 50%, 
+      transparent 70%
+    );
+    animation: shine-effect 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes shine-effect {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    50% {
+      transform: translateX(0%) translateY(0%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
 
   .card .image-container .toggle-wrapper { 
     position: absolute; 
