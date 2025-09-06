@@ -322,28 +322,34 @@ const StyledWrapper = styled.div`
   .card .image-container .status-dot.online { background: #22c55e; }
   .card .image-container .status-dot.offline { background: #9ca3af; }
 
-  .card .image-container .animated-financial-icon {
+  .card .image-container .animated-cards-stack {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: rgba(255, 255, 255, 0.9);
-    animation: financial-pulse 2s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: cards-float 3s ease-in-out infinite;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
   }
 
-  @keyframes financial-pulse {
+  .card .image-container .animated-cards-stack img {
+    width: 100px;
+    height: auto;
+    max-width: 100px;
+    border-radius: 8px;
+  }
+
+  @keyframes cards-float {
     0% { 
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.9;
+      transform: translate(-50%, -50%) translateY(0px) scale(1);
+      opacity: 0.95;
     }
     50% { 
-      transform: translate(-50%, -50%) scale(1.1);
+      transform: translate(-50%, -50%) translateY(-8px) scale(1.05);
       opacity: 1;
     }
     100% { 
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.9;
+      transform: translate(-50%, -50%) translateY(0px) scale(1);
+      opacity: 0.95;
     }
   }
 
