@@ -327,7 +327,7 @@ const StyledWrapper = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    animation: cards-float 3s ease-in-out infinite;
+    animation: cards-entrance 1.2s ease-out forwards;
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
   }
 
@@ -338,18 +338,18 @@ const StyledWrapper = styled.div`
     border-radius: 8px;
   }
 
-  @keyframes cards-float {
+  @keyframes cards-entrance {
     0% { 
-      transform: translate(-50%, -50%) translateY(0px) scale(1);
-      opacity: 0.95;
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0;
     }
     50% { 
-      transform: translate(-50%, -50%) translateY(-8px) scale(1.05);
-      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 0.8;
     }
     100% { 
-      transform: translate(-50%, -50%) translateY(0px) scale(1);
-      opacity: 0.95;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
     }
   }
 
