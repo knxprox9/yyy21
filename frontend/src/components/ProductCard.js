@@ -366,37 +366,48 @@ const StyledWrapper = styled.div`
     height: 100%; 
     width: 100%; 
     border-radius: inherit;
-    background: linear-gradient(135deg, #f1f5f9, #cbd5e0);
     position: relative;
     overflow: hidden;
   }
 
-  .card .image-container .svg::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, 
-      transparent 30%, 
-      rgba(255,255,255,0.4) 50%, 
-      transparent 70%
-    );
-    animation: shine-effect 3s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 1;
+  .card .image-container .shine-container {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e0 100%);
+    box-shadow: 
+      inset 0 1px 3px rgba(255,255,255,0.5),
+      inset 0 -1px 3px rgba(0,0,0,0.1);
   }
 
-  @keyframes shine-effect {
+  .card .image-container .shine-container::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, 
+      transparent 40%, 
+      rgba(255,255,255,0.4) 50%, 
+      transparent 60%
+    );
+    animation: shine-sweep 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @keyframes shine-sweep {
     0% {
       transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      opacity: 0;
     }
-    50% {
-      transform: translateX(0%) translateY(0%) rotate(45deg);
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
     }
     100% {
       transform: translateX(100%) translateY(100%) rotate(45deg);
+      opacity: 0;
     }
   }
 
